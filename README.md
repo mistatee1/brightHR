@@ -18,8 +18,8 @@ npx playwright install --with-deps
 
 ```bash
 APP_URL="https://sandbox-app.brighthr.com/lite" \
-TEST_EMAIL="mranthonyakin@gmail.com" \
-TEST_PASSWORD="@Abcd1234567" \
+TEST_EMAIL="mranthonyakin@live.co.uk" \
+TEST_PASSWORD="NZAfYPJrQHckKX5" \
 npx playwright test tests/employee.spec.ts --project=chromium --workers=1 --headed
 ```
 

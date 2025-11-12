@@ -142,15 +142,17 @@ export class EmployeesPage {
     }
 
     async hasEmployee(firstName: string, lastName: string): Promise<boolean> {
+        // Wait for the employee list to be displayed
+        await this.page.waitForLoadState('domcontentloaded');
 
-        // Look for full name exists on the page and return true if found
-        const byFullName = await this.page.getByText(`${firstName} ${lastName}`).count();
-        if (byFullName > 0) {
-            return true;
+        // Look for the employee
+        const employeeLocator = this.page.locator(`text=${firstName} ${lastName}`).first();
+
+        try {
+            await employeeLocator.waitFor({ state: 'visible', timeout: 10000 });
+            return await employeeLocator.isVisible();
+        } catch {
+            return false;
         }
-
-        // If not found
-        return false;
-
     }
 }
