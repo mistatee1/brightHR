@@ -1,7 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
 
-// Playwright config — best practices
-
 const retries = process.env.PLAYWRIGHT_RETRIES ? Number(process.env.PLAYWRIGHT_RETRIES) : 1;
 
 export default defineConfig({
