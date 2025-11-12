@@ -6,13 +6,6 @@ on:
   pull_request:
     branches: [main, develop]
 
-# Permissions block
-permissions:
-  contents: read
-  checks: write
-  pull-requests: write
-  issues: write
-
 jobs:
   test:
     name: Run Playwright Tests

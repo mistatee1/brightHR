@@ -59,7 +59,7 @@ Tests run automatically on push and pull requests to `main` branch.
    - `APP_URL` — base URL of the app (e.g., `https://sandbox-app.brighthr.com/lite`) - Could be an Environment variable
    - `TEST_EMAIL` — test account email
    - `TEST_PASSWORD` — test account password
-3. Push to `main` or `develop` and the workflow will trigger
+3. Push to `main` and the workflow will trigger
 
 Workflow file: `.github/workflows/playwright.yml`
 - Runs on Node 18 (ubuntu-latest)
