@@ -5,7 +5,7 @@ import { generateEmployees } from './fixtures/testData';
 
 const APP_URL = process.env.APP_URL || 'https://sandbox-app.brighthr.com/lite';
 const TEST_EMAIL = process.env.TEST_EMAIL || 'mranthonyakin@live.co.uk';
-const TEST_PASSWORD = process.env.TEST_PASSWORD || 'Abcdef@12345';
+const TEST_PASSWORD = process.env.TEST_PASSWORD || 'NZAfYPJrQHckKX5';
 
 test.describe('Employees flow', () => {
     test('login, add two employees, verify they appear', async ({ page }) => {
