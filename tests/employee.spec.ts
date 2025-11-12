@@ -19,7 +19,18 @@ test.describe('Employees flow', () => {
         await auth.goto(APP_URL);
         await auth.login(TEST_EMAIL, TEST_PASSWORD);
 
+        // Proper wait for CI environment
+        await page.waitForURL((url) => !url.href.includes('/callback'), {
+            timeout: 30000,
+            waitUntil: 'networkidle'
+        });
+
+        await page.waitForLoadState('domcontentloaded');
+
+        // Increase timeout for CI
         await expect(employees.navEmployees).toBeVisible({ timeout: 20000 });
+
+
         await employees.navigate();
 
         await employees.addEmployee(e1.first, e1.last, e1.email);
