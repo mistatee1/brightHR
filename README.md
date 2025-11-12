@@ -51,7 +51,7 @@ npx playwright show-report
 
 ### GitHub Actions
 
-Tests run automatically on push and pull requests to `main` and `develop` branches.
+Tests run automatically on push and pull requests to `main` branch.
 
 **Setup:**
 1. Go to your repository Settings → Secrets and variables → Actions
