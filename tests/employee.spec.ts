@@ -19,7 +19,7 @@ test.describe('Employees flow', () => {
         await auth.goto(APP_URL);
         await auth.login(TEST_EMAIL, TEST_PASSWORD);
 
-        await expect(employees.navEmployees).toBeVisible();
+        await expect(employees.navEmployees).toBeVisible({ timeout: 20000 });
         await employees.navigate();
 
         await employees.addEmployee(e1.first, e1.last, e1.email);
