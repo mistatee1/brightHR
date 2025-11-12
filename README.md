@@ -56,7 +56,7 @@ Tests run automatically on push and pull requests to `main` branch.
 **Setup:**
 1. Go to your repository Settings → Secrets and variables → Actions
 2. Add three secrets:
-   - `APP_URL` — base URL of the app (e.g., `https://sandbox-app.brighthr.com/lite`)
+   - `APP_URL` — base URL of the app (e.g., `https://sandbox-app.brighthr.com/lite`) - Could be an Environment variable
    - `TEST_EMAIL` — test account email
    - `TEST_PASSWORD` — test account password
 3. Push to `main` or `develop` and the workflow will trigger
@@ -65,7 +65,6 @@ Workflow file: `.github/workflows/playwright.yml`
 - Runs on Node 18 (ubuntu-latest)
 - Installs dependencies and Playwright browsers
 - Runs tests with 2 retries (configurable via `PLAYWRIGHT_RETRIES` env)
-- Archives HTML report and JUnit results
-- Publishes results as a check on PRs
+- Upload test results
 
 
