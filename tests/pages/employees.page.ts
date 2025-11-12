@@ -17,7 +17,7 @@ export class EmployeesPage {
         // Target "Add employee"
         this.addButton = page.locator('button:has-text("Add employee")').first();
 
-        // Common form fields. These rely on good label usage in the app.
+        // Common form fields
         this.firstNameInput = page.getByLabel(/first name/i);
         this.lastNameInput = page.getByLabel(/last name/i);
         this.emailInput = page.getByRole('textbox', { name: /email/i });
