@@ -1,0 +1,13 @@
+{
+  "name": "bright-hr-playwright-tests",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:ci": "playwright test --project=chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^18.0.0"
+  }
+}
