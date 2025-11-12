@@ -19,7 +19,7 @@ npx playwright install --with-deps
 ```bash
 APP_URL="https://sandbox-app.brighthr.com/lite" \
 TEST_EMAIL="mranthonyakin@gmail.com" \
-TEST_PASSWORD="@Uthenticateme1290" \
+TEST_PASSWORD="@Abcd1234567" \
 npx playwright test tests/employee.spec.ts --project=chromium --workers=1 --headed
 ```
 
@@ -67,19 +67,5 @@ Workflow file: `.github/workflows/playwright.yml`
 - Runs tests with 2 retries (configurable via `PLAYWRIGHT_RETRIES` env)
 - Archives HTML report and JUnit results
 - Publishes results as a check on PRs
-
-### Jenkins
-
-A `Jenkinsfile` (declarative pipeline) is included for Jenkins integration.
-
-**Setup:**
-1. Create a new Pipeline job in Jenkins
-2. Point it to your repository and select "Pipeline script from SCM"
-3. Set the script path to `Jenkinsfile`
-4. Add three secrets (Credentials) to your Jenkins instance:
-   - `APP_URL`
-   - `TEST_EMAIL`
-   - `TEST_PASSWORD`
-5. Configure job parameters or use the env variables directly
 
 
