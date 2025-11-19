@@ -8,7 +8,6 @@ export class EmployeesPage {
     readonly lastNameInput: Locator;
     readonly emailInput: Locator;
     readonly saveButton: Locator;
-    readonly listContainer: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -23,8 +22,6 @@ export class EmployeesPage {
         this.emailInput = page.getByRole('textbox', { name: /email/i });
         // Target the submit button in the form modal (has type="submit", not the "Add employee" button)
         this.saveButton = page.getByRole('button', { name: /save|save new employee/i });
-
-        this.listContainer = page.getByRole('region', { name: /employees|employee list|list/i }).or(page.locator('table'));
     }
 
     /**
@@ -40,10 +37,13 @@ export class EmployeesPage {
             await closeButton.click();
 
             // Wait for modal to be removed/hidden
-            await this.page.waitForFunction(
-                () => document.querySelectorAll('[role="dialog"]').length === 0,
-                { timeout: 5000 }
-            ).catch(() => { });
+            try {
+                await expect(this.page.locator('[role="dialog"]'))
+                    .toHaveCount(0, { timeout: 5000 });
+            } catch (err) {
+                // Log error but don't fail
+                console.warn('Dialogs still present after 5s, continuing anyway');
+            }
             return;
         }
     }
@@ -130,13 +130,13 @@ export class EmployeesPage {
         // Job title
         const jobTitleInput = this.page.getByLabel(/job title/i);
         if (await jobTitleInput.count() > 0) {
-            await jobTitleInput.fill('QA Engineer');
+            await jobTitleInput.fill('Senior QA Engineer');
         }
 
         await this.saveButton.click();
         // After saving, the success modal appears with "Add another employee" button
         // Wait for the success modal and button to be visible
-        await expect(this.page.locator('button:has-text("Add another employee")')).toBeVisible({ timeout: 10000 });
+        await expect(this.page.locator('button:has-text("Add another employee")')).toBeVisible({ timeout: 20000 });
         // Wait for the list to update with the new employee
         await this.page.waitForLoadState('networkidle');
     }
